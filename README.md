@@ -1,7 +1,11 @@
-# Getting Started with Create React App
+# Solid Tools Corp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to our site: [Solid Tools Corp](https://solid-tools-corp.web.app).
 
-## Available Scripts
+## Technologies used to create this site:
 
-* one point
+* React
+* React Ruter
+* Firebase
+* Tailwind
+* Daisy UI

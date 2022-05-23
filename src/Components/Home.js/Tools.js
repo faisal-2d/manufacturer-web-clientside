@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Loading from '../Common/Loading';
 import Tool from './Tool';
 
 const Tools = () => {
@@ -11,6 +12,10 @@ const Tools = () => {
         .then(data => setLoadProducts(data.data));
         setProducts(loadProducts?.slice(0,6));
     },[loadProducts])
+
+    if(products.length == 0){
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h3 className='text-3xl text-primary text-center mb-10'>Products/tools: {products.length} </h3>

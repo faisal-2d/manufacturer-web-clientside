@@ -3,19 +3,20 @@ import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import Loading from "../Common/Loading";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user, eLoading, error] = useSignInWithEmailAndPassword(auth);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const handleFormSubmit = e =>{ 
-      e.preventDefault();
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      signInWithEmailAndPassword(email, password);
-      e.target.reset();
+  const handleFormSubmit = data =>{
+    signInWithEmailAndPassword(data.email, data.password);    
     };
+
+    if(eLoading || gLoading ){
+      return <Loading></Loading>
+  }
 
    
   return (
@@ -24,7 +25,7 @@ const Login = () => {
   <div className="card-body">
     <h2 className="mb-3 card-title">Please Log in</h2>
 
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="mb-3">
       <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs"  {...register("email", { required: true })} />
       {errors.email?.type === 'required' && "First name is required"}

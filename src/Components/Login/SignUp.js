@@ -10,22 +10,19 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, eUser, eLoading, eError] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, error] = useUpdateProfile(auth);
 
-  const { register, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  if(eLoading){
+  if(eLoading || gLoading || updating ){
       return <Loading></Loading>
   }
   
-  const handleFormSubmit = async e =>{ 
-      e.preventDefault();
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      const displayName = e.target.name.value;
-
-      await createUserWithEmailAndPassword(email,password);
-      await updateProfile({displayName}); 
-      e.target.reset();     
+  const handleFormSubmit = async data =>{ 
+      const displayName = data.name;     
+      await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({displayName});     
+    
     };    
+  
 
     return (
         <div>  
@@ -34,19 +31,19 @@ const SignUp = () => {
     <h2 className="mb-3 card-title">Please Sign up</h2>
 
     {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="mb-3">
-      <input type="text" placeholder="Name" name='name' className="input input-bordered w-full max-w-xs"  {...register("name", { required: true })} />
+      <input type="text" placeholder="Name" name='name' className="input input-bordered w-full max-w-xs mb-2"  {...register("name", { required: true })} />
       {errors.name?.type === 'required' && "Name is required"}
       </div>
 
       <div className="mb-3">
-      <input type="email" placeholder="Email" name='email' className="input input-bordered w-full max-w-xs"  {...register("email", { required: true })} />
+      <input type="email" placeholder="Email" name='email' className="input input-bordered w-full max-w-xs mb-2"  {...register("email", { required: true })} />
       {errors.email?.type === 'required' && "Email is required"}
       </div>
       
       <div className="mb-3">
-      <input type="password" placeholder="Password" name='password' className="input input-bordered w-full max-w-xs" {...register("password", { required: true })} />
+      <input type="password" placeholder="Password" name='password' className="input input-bordered w-full max-w-xs mb-2" {...register("password", { required: true })} />
       {errors.password && "Password is required"}
       </div>
 

@@ -7,7 +7,7 @@ const Login = () => {
     console.log(user);
     return (
         <div>
-            <button onClick={() => signInWithGoogle()}>Google</button>
+            <button className='btn btn-red-200' onClick={() => signInWithGoogle()}>Google</button>
         </div>
     );
 };

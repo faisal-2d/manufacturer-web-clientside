@@ -1,19 +1,22 @@
 import React from "react";
 import auth from "../../firebase.init";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = e =>{ 
+
+  const handleFormSubmit = e =>{ 
       e.preventDefault();
-      console.log(e);
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      signInWithEmailAndPassword(email, password);
+      e.target.reset();
     };
 
-  console.log(watch("example"));
-  console.log(user);
-//   <button className="btn btn-red-200" onClick={() => signInWithGoogle()}>
    
   return (
     <div>  
@@ -21,7 +24,7 @@ const Login = () => {
   <div className="card-body">
     <h2 className="mb-3 card-title">Please Log in</h2>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleFormSubmit}>
       <div className="mb-3">
       <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs"  {...register("email", { required: true })} />
       {errors.email?.type === 'required' && "First name is required"}
@@ -34,13 +37,15 @@ const Login = () => {
 
       <div className="mb-3 card-actions">
       <button type="submit" className="btn btn-primary w-full">Log in</button>
-    </div>      
+    </div>  
+
+    <p className="mt-5">Don't have an account? <Link to="/signup" className="text-primary">Sign up</Link></p>    
      
     </form>  
 
     <div>
-        <div class="flex flex-col w-full border-opacity-50">  
-            <div class="divider">OR</div> 
+        <div className="flex flex-col w-full border-opacity-50">  
+            <div className="divider">OR</div> 
         </div>
 
         <div className="mb-3 card-actions">
@@ -52,14 +57,7 @@ const Login = () => {
     </div>
     
   </div>
-</div>
-
-
-
-
-
-
-      
+</div>      
     </div>
   );
 };

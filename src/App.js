@@ -9,6 +9,9 @@ import Purchase from './Components/Purchase/Purchase';
 import Dashboard from './Components/Dashboard/Dashboard';
 import MyProfile from './Components/Dashboard/MyProfile';
 import AddReview from './Components/Dashboard/AddReview';
+import NotFound from './Components/NotFound';
+import Myportfolio from './Components/MyPortfolio/Myportfolio';
+import Blog from './Components/Blog/Blog';
 
 
 function App() {
@@ -17,6 +20,8 @@ function App() {
       <Navbar></Navbar>
       <Routes>
         <Route path='' element={<Home></Home>}></Route>
+        <Route path='blog' element={<Blog></Blog>}></Route>
+        <Route path='myportfolio' element={<Myportfolio></Myportfolio>}></Route>
         <Route path='purchase' element={<Purchase></Purchase>}></Route>
         <Route path='dashboard' element={<Dashboard></Dashboard>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
@@ -24,6 +29,7 @@ function App() {
         </Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

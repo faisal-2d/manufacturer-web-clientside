@@ -14,7 +14,7 @@ const Reviews = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
+        <div className='px-12'>
             <p>Total Reviews: {reviews.length}</p>
             <h2 className='text-3xl font-bold text-center text-slate-600 my-20'>Customers' Review</h2>
 

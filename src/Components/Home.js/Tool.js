@@ -14,7 +14,7 @@ const Tool = ({product}) => {
         <h2 className="card-title">Shoes!</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <Link to="" ><button className="btn btn-sm btn-primary">Order Now</button></Link>
+          <Link to={`purchase/${product._id}`} ><button product={product} className="btn btn-sm btn-primary">Order Now</button></Link>
         </div>
       </div>
     </div>

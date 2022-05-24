@@ -21,27 +21,27 @@
     },
     {
         "name" : "Haidar",
-        "rating" : 5,
+        "rating" : 4,
         "comment": "Good Products. I'm very satisfied"
     },
     {
         "name" : "Fahim",
-        "rating" : 5,
+        "rating" : 1,
         "comment": "Good Products. I'm very satisfied"
     },
     {
         "name" : "Shakil",
-        "rating" : 5,
+        "rating" : 2,
         "comment": "Good Products. I'm very satisfied"
     },
     {
         "name" : "Sarwar",
-        "rating" : 5,
+        "rating" : 3,
         "comment": "Good Products. I'm very satisfied"
     },
     {
         "name" : "Bolla",
-        "rating" : 5,
+        "rating" : 4,
         "comment": "Good Products. I'm very satisfied"
     },
     {
@@ -51,7 +51,7 @@
     },
     {
         "name" : "Nilu",
-        "rating" : 5,
+        "rating" : 2,
         "comment": "Good Products. I'm very satisfied"
     }
 ]

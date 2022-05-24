@@ -1,14 +1,103 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useForm } from 'react-hook-form';
+import { Link, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Common/Loading';
 
-const Purchase = () => {
+import banner from '../../assets/bannerImg1.png'
+
+const Purchase = () => {    
     const [user, loading, error] = useAuthState(auth);
+    const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm();
+
+    const {id} = useParams();    
+  
+      if(loading ){
+        return <Loading></Loading>
+    }
+    const handleFormSubmit = data =>{
+        console.log(data);;    
+        };
+    
     
     return (
-        <div>
-            <p>User Name: {user?.displayName}</p>
-            <p>Email: {user?.email}</p>
+        <div>            
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>  
+
+            <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
+  <div className="card-body">
+    <h2 className="mb-3 card-title">Product {id}</h2>
+
+    <div className="mb-3">
+        <img src={banner} alt="" />          
+      </div>
+    </div>
+    </div>
+
+    <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
+  <div className="card-body">
+    <h2 className="mb-3 card-title">Order Info</h2>
+
+    <div className="mb-3">
+    <label className="label">Product Name</label>
+      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={user.displayName}  {...register("displayName")} />
+      {setValue("displayName", user.displayName)}      
+      </div>
+
+    <div>
+    <p>Avaibale Quantity: 1500</p>  
+    <p>Miniumum Order Amount: 100</p> 
+
+    </div>    
+    <div>
+    <p>Per Piece Price: 50</p>  
+    <p>Amount To Pay: 100</p> 
+
+    </div>    
+    
+      <div className="mb-3">
+        <label className="label">Quantity</label>
+      <input type="text" placeholder="Quantity" className="input input-bordered w-full max-w-xs" {...register("amount", { required: true })} />
+      {errors.amount && "Amount"}
+      </div>
+           
+     
+    </div>
+    </div>
+
+        <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
+  <div className="card-body">
+    <h2 className="mb-3 card-title">User Info</h2>
+
+    
+    <div className="mb-3">
+      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={user.displayName}  {...register("displayName")} />
+      {setValue("displayName", user.displayName)}      
+      </div>
+    <div className="mb-3">
+      <input type="email" disabled className="input input-bordered w-full max-w-xs" value={user.email}  {...register("email")} />
+      {setValue("email", user.email)}      
+      </div>
+      
+      <div className="mb-3">
+      <input type="text" placeholder="Phone: 0171565656" className="input input-bordered w-full max-w-xs" {...register("phone", { required: true })} />
+      {errors.phone && "Phone No is required"}
+      </div>      
+      <div className="mb-3">
+      <input type="text" placeholder="Address : Road, City, State" className="input input-bordered w-full max-w-xs" {...register("address", { required: true })} />
+      {errors.address && "Phone No is required"}
+      </div>      
+      
+      <div className="mb-3 card-actions">
+      <button type="submit" className="btn btn-primary w-full">Confirm Order</button>
+    </div>
+    </div>
+    </div>          
+    </div>    
+    </form> 
         </div>
     );
 };

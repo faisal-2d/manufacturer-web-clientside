@@ -17,7 +17,7 @@ const Navbar = () => {
      <li><Link to="/">Home</Link></li>               
      <li><Link to="/blog">Blog</Link></li>               
      <li><Link to="/myportfolio">My Portfolio</Link></li>
-     <li><Link to="/purchase">Purchase</Link></li>
+     {/* <li><Link to="/purchase">Purchase</Link></li> */}
      <li><Link to="/dashboard">Dashboard</Link></li>
      {user ? <li><Link to="" onClick={logout}>Log out</Link></li> : <li><Link to="/login">Log in</Link></li>}
     </>

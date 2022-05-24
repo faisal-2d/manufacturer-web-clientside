@@ -3,6 +3,8 @@ import Banner from './Banner';
 import BusinessSummery from './BusinessSummery';
 import Reviews from './Reviews';
 import Tools from './Tools';
+import Subscribe from './Subscribe';
+import WhyChooseUs from './WhyChooseUs';
 
 const Home = () => {
     return (
@@ -11,8 +13,8 @@ const Home = () => {
             <Tools></Tools>
             <BusinessSummery></BusinessSummery>
             <Reviews></Reviews>
-            <div>Extra 1</div>
-            <div>Extra 2</div>
+            <WhyChooseUs> </WhyChooseUs>
+            <Subscribe></Subscribe>
         </div>
     );
 };

@@ -13,7 +13,7 @@ const Tools = () => {
         setProducts(loadProducts?.slice(0,6));
     },[loadProducts])
 
-    if(products.length == 0){
+    if(!products){
         return <Loading></Loading>
     }
     return (

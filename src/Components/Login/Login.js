@@ -35,6 +35,10 @@ const Login = () => {
       <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs" {...register("password", { required: true })} />
       {errors.password && "Last name is required"}
       </div>
+      
+      <label className="label">
+            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          </label>
 
       <div className="mb-3 card-actions">
       <button type="submit" className="btn btn-primary w-full">Log in</button>

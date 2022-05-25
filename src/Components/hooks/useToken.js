@@ -5,13 +5,14 @@ const useToken = (user) => {
     const [token, setToken] = useState('');
     useEffect(()=> {
         const userEmail = user?.user?.email;
+        console.log(userEmail);
         const currentUser = {email : userEmail};
         if(userEmail){            
             axios.put(`http://localhost:5000/user/${userEmail}`, currentUser)
             .then(data => {
                 console.log(data.data)
-                const accessToken = data.token;
-                localStorage.setItem("token",accessToken)
+                const accessToken = data.data.token;
+                localStorage.setItem("accessToken",accessToken)
                 setToken(accessToken)
             })
         }

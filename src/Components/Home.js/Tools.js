@@ -4,14 +4,15 @@ import Loading from '../Common/Loading';
 import Tool from './Tool';
 
 const Tools = () => {
-    const [loadProducts, setLoadProducts] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
     
     useEffect(()=>{
-        axios.get('products.json')
-        .then(data => setLoadProducts(data.data));
-        setProducts(loadProducts?.slice(0,6));
-    },[loadProducts])
+        axios.get('http://localhost:5000/products')
+        .then(data => setAllProducts(data.data));  
+    },[])
+    
+    const products = allProducts?.slice(0,6);
+    
 
     if(!products){
         return <Loading></Loading>

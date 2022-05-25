@@ -6,9 +6,12 @@ import ReviewCard from './ReviewCard';
 const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        axios.get('reviews.json')
+        const headers = { 
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+            };
+        axios.get('http://localhost:5000/reviews', {headers})
     .then(data => setReviews(data.data));
-    } ,[reviews]);
+    } ,[]);
 
     if(!reviews){
         return <Loading></Loading>

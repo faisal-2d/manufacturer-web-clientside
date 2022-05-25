@@ -1,6 +1,6 @@
 import React from "react";
 import auth from "../../firebase.init";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut, useSignInWithFacebook } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Common/Loading";
@@ -8,6 +8,7 @@ import useToken from "../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, user, loading, fError] = useSignInWithFacebook(auth);
   const [signInWithEmailAndPassword, eUser, eLoading, error] = useSignInWithEmailAndPassword(auth);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [token] = useToken(gUser || eUser);
@@ -64,7 +65,7 @@ const Login = () => {
             <button  onClick={() => signInWithGoogle()}  className="btn btn-outline btn-accent w-full">Google</button>
         </div> 
         <div className="mb-3 card-actions">
-            <button  className="btn btn-outline btn-accent w-full">Facebook</button>
+            <button onClick={() => signInWithFacebook()}  className="btn btn-outline btn-accent w-full">Facebook</button>
         </div> 
     </div>
     

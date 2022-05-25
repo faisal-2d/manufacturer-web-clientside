@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut, useSignInWithFacebook, useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../Common/Loading";
 import useToken from "../hooks/useToken";
 
@@ -18,13 +18,19 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);    
     };
 
+    
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    useEffect(()=> {
+      if(token){
+        navigate(from, { replace: true });
+      }
+    } ,[token])
 
     if(eLoading || gLoading ){
       return <Loading></Loading>
-  }
-  if(token){
-    // navigate
   }
 
    

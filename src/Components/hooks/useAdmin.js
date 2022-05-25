@@ -3,20 +3,19 @@ import { useEffect, useState } from "react";
 
 const useAdmin = (user) => {
     const [admin, setAdmin] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(()=> {
         const userEmail = user?.email;        
         if(userEmail){                       
             axios.get(`http://localhost:5000/admin/${userEmail}`)
             .then(data => {
-                setAdmin(data.data.isAdmin)
+                setAdmin(data.data.isAdmin);
+                setIsLoading(false);                
             })
         }
 
-
-
     } ,[user])
-    return [admin]
-
+    return [admin, isLoading];
 }
 export default  useAdmin;
 

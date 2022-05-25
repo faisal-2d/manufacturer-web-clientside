@@ -2,20 +2,27 @@ import React from "react";
 import auth from "../../firebase.init";
 import { useSignInWithEmailAndPassword, useSignInWithGoogle, signOut } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Common/Loading";
+import useToken from "../hooks/useToken";
 
 const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, eLoading, error] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, eUser, eLoading, error] = useSignInWithEmailAndPassword(auth);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const [token] = useToken(gUser || eUser);
 
   const handleFormSubmit = data =>{
     signInWithEmailAndPassword(data.email, data.password);    
     };
 
+    const navigate = useNavigate();
+
     if(eLoading || gLoading ){
       return <Loading></Loading>
+  }
+  if(token){
+    // navigate
   }
 
    

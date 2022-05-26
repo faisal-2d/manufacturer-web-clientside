@@ -17,7 +17,7 @@ const Purchase = () => {
     const navigate = useNavigate(); 
     
     useEffect(() => {
-      axios.get(`http://localhost:5000/product/${id}`)
+      axios.get(`https://gentle-journey-61148.herokuapp.com/product/${id}`)
     .then(data => setProduct(data.data))
     }, [id])
   
@@ -37,7 +37,7 @@ const Purchase = () => {
           isPaid:false,
           isShiped:false
         }
-        axios.post(`http://localhost:5000/order`, order)
+        axios.post(`https://gentle-journey-61148.herokuapp.com/order`, order)
         .then(data => {
           console.log("Order created ", data.data)
 

@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../Common/Loading';
+import MyOrdersRow from './MyOrdersRow';
 
 const MyOrders = () => {
     const [user, loading, error] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const [ordersLoading, setOrdersLoading] = useState(true)
     useEffect(() => {
-        axios.get(` http://localhost:5000/orders/${user.email}`)
+        axios.get(` https://gentle-journey-61148.herokuapp.com/orders/${user.email}`)
         .then(data => setOrders(data.data))
         setOrdersLoading(false)
     },[])
@@ -19,9 +20,30 @@ const MyOrders = () => {
     }
   
     return (
-        <div>
-            <p>My orders {orders.length}</p>
-        </div>
+        <div className="overflow-x-auto p-3">
+  <table className="table w-80 h-full">
+   
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product Name</th>
+        <th>Quantity</th>        
+        <th>Action</th>        
+      </tr>
+    </thead>
+    <tbody>
+    
+      {
+          orders.map((order,index) => <MyOrdersRow
+          key={index}
+          index={index}
+          order={order}
+          ></MyOrdersRow>)
+      }
+      
+    </tbody>
+  </table>
+</div>
     );
 };
 

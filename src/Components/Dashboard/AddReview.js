@@ -18,7 +18,7 @@ const AddReview = () => {
                 rating: data.rating,
                 comment: data.comment                 
             }
-        axios.post('http://localhost:5000/review', review)
+        axios.post('https://gentle-journey-61148.herokuapp.com/review', review)
         .then(data => console.log("Review added: ", data))    
     };      
 

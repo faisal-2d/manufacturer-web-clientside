@@ -7,7 +7,7 @@ const Tools = () => {
     const [allProducts, setAllProducts] = useState([]);
     
     useEffect(()=>{
-        axios.get('http://localhost:5000/products')
+        axios.get('https://gentle-journey-61148.herokuapp.com/products')
         .then(data => setAllProducts(data.data));  
     },[])
     

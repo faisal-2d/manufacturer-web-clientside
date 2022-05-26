@@ -35,7 +35,7 @@ const AddProduct = () => {
                     addedBy: user.email                   
 
                 }
-                axios.post('http://localhost:5000/product',product)
+                axios.post('https://gentle-journey-61148.herokuapp.com/product',product)
                 .then(data => console.log("Created Successfully: ", data))
             }
             })

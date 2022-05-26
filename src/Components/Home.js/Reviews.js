@@ -7,10 +7,8 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     
     useEffect(() => {
-        const headers = { 
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
-            };
-        axios.get('http://localhost:5000/reviews', {headers})
+       
+        axios.get('https://gentle-journey-61148.herokuapp.com/reviews')
     .then(data => reversedReviews(data.data));
     } ,[]);
 

@@ -15,7 +15,7 @@ const Tool = ({product}) => {
         <p>{product.description}</p>
         <p><span className="font-bold">Available Quantity:</span> {product.availableQuantity}</p>
         <p><span className="font-bold">Minimum Order Quantity:</span> {product.minOrder}</p>
-        <p><span className="font-bold">Price/Unit:</span> {product.perUnitPrice}</p>
+        <p><span className="font-bold">Price/Unit:</span> {product.perUnitPrice} Tk</p>
         <div className="card-actions justify-end">
           <Link to={`purchase/${product._id}`} ><button product={product} className="btn btn-sm btn-primary">Order Now</button></Link>
         </div>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Common/Loading';
 
@@ -11,14 +11,39 @@ import banner from '../../assets/bannerImg1.png'
 const Purchase = () => {    
     const [user, loading, error] = useAuthState(auth);
     const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm();
+    const [product,setProduct] = useState({});
 
-    const {id} = useParams();    
+    const {id} = useParams(); 
+    const navigate = useNavigate(); 
+    
+    useEffect(() => {
+      axios.get(`http://localhost:5000/product/${id}`)
+    .then(data => setProduct(data.data))
+    }, [id])
   
-      if(loading ){
+      if(loading || !product ){
         return <Loading></Loading>
     }
     const handleFormSubmit = data =>{
-        console.log(data);;    
+        console.log(data);
+        const order = {
+          productId: id,          
+          productName: product.productName,          
+          totalAmount: data.amount*product.perUnitPrice,
+          transactioId:"Not Paid",
+          orderedBy: user.email,
+          phone: data.phone,
+          address: data.address,
+          isPaid:false,
+          isShiped:false
+        }
+        axios.post(`http://localhost:5000/order`, order)
+        .then(data => {
+          console.log("Order created ", data.data)
+          if(data.data.success){
+            navigate(`/payment/${id}`);
+          }
+        })   
         };
     
     
@@ -28,10 +53,10 @@ const Purchase = () => {
   <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
   <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
   <div className="card-body">
-    <h2 className="mb-3 card-title">Product {id}</h2>
+    <h2 className="mb-3 card-title">Product: {product.productName}</h2>
 
     <div className="mb-3">
-        <img src={banner} alt="" />          
+        <img src={product.img} alt="" />          
       </div>
     </div>
     </div>
@@ -42,20 +67,19 @@ const Purchase = () => {
 
     <div className="mb-3">
     <label className="label">Product Name</label>
-      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={user.displayName}  {...register("displayName")} />
-      {setValue("displayName", user.displayName)}      
+      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={product.productName}  {...register("productName")} />
+      {setValue("productName", product.productName)}      
       </div>
 
     <div>
-    <p>Avaibale Quantity: 1500</p>  
-    <p>Miniumum Order Amount: 100</p> 
+    <p>Avaibale Quantity: {product.availableQuantity}</p>  
+    <p>Miniumum Order Amount: {product.minOrder}</p> 
 
     </div>    
     <div>
-    <p>Per Piece Price: 50</p>  
-    <p>Amount To Pay: 100</p> 
-
-    </div>    
+    <p>Per Piece Price: {product.perUnitPrice} Tk</p> 
+     
+  </div>    
     
       <div className="mb-3">
         <label className="label">Quantity</label>

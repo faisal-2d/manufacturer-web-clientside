@@ -19,6 +19,7 @@ import MakeAdmin from './Components/Dashboard/MakeAdmin';
 import ManageProducts from './Components/Dashboard/ManageProducts';
 import ReqiureAuth from './Components/Login/RequireAuth';
 import RequireAdmin from './Components/Login/RequireAdmin';
+import Payment from './Components/Purchase/Payment';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='myportfolio' element={<Myportfolio></Myportfolio>}></Route>
         <Route path='purchase/:id' element={<Purchase></Purchase>}></Route>
+        <Route path='payment/:productId' element={<Payment></Payment>}></Route>
         <Route path='dashboard' element={<ReqiureAuth><Dashboard></Dashboard></ReqiureAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>

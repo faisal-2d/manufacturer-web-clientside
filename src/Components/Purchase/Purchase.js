@@ -25,9 +25,8 @@ const Purchase = () => {
     return (
         <div>            
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>  
-
-            <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
+  <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
+  <div className="card w-96 bg-base-100 shadow-xl mx-auto">  
   <div className="card-body">
     <h2 className="mb-3 card-title">Product {id}</h2>
 

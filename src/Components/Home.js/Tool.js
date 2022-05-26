@@ -11,8 +11,11 @@ const Tool = ({product}) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Shoes!</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <h2 className="card-title">{product.productName}</h2>
+        <p>{product.description}</p>
+        <p><span className="font-bold">Available Quantity:</span> {product.availableQuantity}</p>
+        <p><span className="font-bold">Minimum Order Quantity:</span> {product.minOrder}</p>
+        <p><span className="font-bold">Price/Unit:</span> {product.perUnitPrice}</p>
         <div className="card-actions justify-end">
           <Link to={`purchase/${product._id}`} ><button product={product} className="btn btn-sm btn-primary">Order Now</button></Link>
         </div>

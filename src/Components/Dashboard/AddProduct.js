@@ -64,8 +64,8 @@ const AddProduct = () => {
       </div>
 
       <div className="mb-3">
-      <textarea placeholder="Product Description" className="textarea textarea-bordered w-full max-w-xs" {...register("descripton", { required: true })} />
-      {errors.descripton && "Descripton is required"}
+      <textarea placeholder="Product Description" className="textarea textarea-bordered w-full max-w-xs" {...register("description", { required: true })} />
+      {errors.description && "Description is required"}
       </div>
 
       <div className="mb-3">

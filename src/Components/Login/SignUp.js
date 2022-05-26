@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -19,9 +19,11 @@ const SignUp = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     
-    if(token){
-      navigate(from, { replace: true });
-    }
+    useEffect(()=> {
+      if(token){
+        navigate(from, { replace: true });
+      }
+    } ,[token])
 
   if(eLoading || gLoading || updating ){
       return <Loading></Loading>

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -9,8 +10,16 @@ const AddReview = () => {
     const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm();
 
     
-    const handleFormSubmit = data =>{
-       console.log(data);    
+    const handleFormSubmit = data =>{      
+      
+       const review = {
+                name:user.displayName,
+                email: user.email,
+                rating: data.rating,
+                comment: data.comment                 
+            }
+        axios.post('http://localhost:5000/review', review)
+        .then(data => console.log("Review added: ", data))    
     };      
 
     if(loading){

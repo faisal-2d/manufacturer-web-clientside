@@ -14,9 +14,10 @@ const Login = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [token] = useToken(gUser || eUser);
 
-  const handleFormSubmit = data =>{
+
+  const handleFormSubmit = data =>{  
     signInWithEmailAndPassword(data.email, data.password);    
-    };
+    };  
 
     
     const navigate = useNavigate();
@@ -33,6 +34,7 @@ const Login = () => {
       return <Loading></Loading>
   }
 
+
    
   return (
     <div>  
@@ -40,15 +42,17 @@ const Login = () => {
   <div className="card-body">
     <h2 className="mb-3 card-title">Please Log in</h2>
 
+    {cError ? <p className="p-3 my-8 rounded-sm text-red-600 bg-red-200">Invalid Email Or Password</p> : <p></p>}
+
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div className="mb-3">
       <input type="email" placeholder="Email" className="input input-bordered w-full max-w-xs"  {...register("email", { required: true })} />
-      {errors.email?.type === 'required' && "First name is required"}
+      {errors.email?.type === 'required' && "Email is required"}
       </div>
       
       <div className="mb-3">
       <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs" {...register("password", { required: true })} />
-      {errors.password && "Last name is required"}
+      {errors.password && "Password is required"}
       </div>
       
       <label className="label">

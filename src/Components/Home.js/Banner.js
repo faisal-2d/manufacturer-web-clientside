@@ -12,7 +12,7 @@ const Banner = () => {
     <div>
       <h1 className="text-5xl font-bold">Get All <span className='text-primary'>Electric Tools!</span></h1>
       <p className="py-6">We are supplying all essential electric tools and accesories at reasonable price! Our producrts are lite-weight, durable and long lasting! Get your tool now </p>
-      <button className="btn btn-primary">explore now</button>
+      <a href='#tools' ><button className="btn btn-primary">explore now</button></a>
     </div>
   </div>
 </div>

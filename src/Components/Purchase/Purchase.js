@@ -40,8 +40,9 @@ const Purchase = () => {
         axios.post(`http://localhost:5000/order`, order)
         .then(data => {
           console.log("Order created ", data.data)
+
           if(data.data.success){
-            navigate(`/payment/${id}`);
+            navigate(`/payment/${data.data.result.insertedId}`);
           }
         })   
         };
@@ -83,8 +84,8 @@ const Purchase = () => {
     
       <div className="mb-3">
         <label className="label">Quantity</label>
-      <input type="text" placeholder="Quantity" className="input input-bordered w-full max-w-xs" {...register("amount", { required: true })} />
-      {errors.amount && "Amount"}
+      <input type="text" placeholder="Quantity" className="input input-bordered w-full max-w-xs" {...register("amount",{ min: product.minOrder, max: product.availableQuantity }, { required: true })} />
+      {errors.amount && "Amount can't be less than MINIMUM ORDER amount and more than AVAILABE amount"}
       </div>
            
      

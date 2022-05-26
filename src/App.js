@@ -31,7 +31,7 @@ function App() {
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='myportfolio' element={<Myportfolio></Myportfolio>}></Route>
         <Route path='purchase/:id' element={<Purchase></Purchase>}></Route>
-        <Route path='payment/:productId' element={<Payment></Payment>}></Route>
+        <Route path='payment/:orderId' element={<Payment></Payment>}></Route>
         <Route path='dashboard' element={<ReqiureAuth><Dashboard></Dashboard></ReqiureAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>

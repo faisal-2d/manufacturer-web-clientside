@@ -57,9 +57,9 @@ const Blog = () => {
                 <div className='my-10'>                   
                         <code>                           
                         <p>
-                            const myArray = [{ }]; <br />
+                            const myArray = [...]; <br />
                             const searchName = "iPhone 12"; <br />
-                            const result = myArray.filter(item =&gt;  item.name === searchName);
+                            const result = myArray.filter(item =&gt;  item.name === searchName); <br />
                             console.log(result);                            
                         </p>                    
                         </code>

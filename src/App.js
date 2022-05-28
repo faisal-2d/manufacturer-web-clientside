@@ -30,8 +30,8 @@ function App() {
         <Route path='' element={<Home></Home>}></Route>
         <Route path='blog' element={<Blog></Blog>}></Route>
         <Route path='myportfolio' element={<Myportfolio></Myportfolio>}></Route>
-        <Route path='purchase/:id' element={<Purchase></Purchase>}></Route>
-        <Route path='payment/:orderId' element={<Payment></Payment>}></Route>
+        <Route path='purchase/:id' element={<ReqiureAuth><Purchase></Purchase></ReqiureAuth>}></Route>
+        <Route path='payment/:orderId' element={<ReqiureAuth><Payment></Payment></ReqiureAuth>}></Route>
         <Route path='dashboard' element={<ReqiureAuth><Dashboard></Dashboard></ReqiureAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='addreview' element={<AddReview></AddReview>}></Route>

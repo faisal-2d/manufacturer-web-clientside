@@ -28,7 +28,8 @@ const Purchase = () => {
         console.log(data);
         const order = {
           productId: id,          
-          productName: product.productName,          
+          productName: product.productName,
+          orderQuantity: data.amount,          
           totalAmount: data.amount*product.perUnitPrice,
           transactioId:"Not Paid",
           orderedBy: user.email,

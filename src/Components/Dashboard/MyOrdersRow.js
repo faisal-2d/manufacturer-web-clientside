@@ -5,7 +5,7 @@ const MyOrdersRow = ({order, index}) => {
         <tr>
         <th>{index+1}</th>
         <td>{order.productName}</td>
-        <td>{order.quantity}</td>
+        <td>{order.orderQuantity}</td>
         <td><button className='btn btn-sm bg-yellow-500'>Cancel</button></td>        
       </tr>
     );

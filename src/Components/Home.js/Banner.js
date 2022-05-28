@@ -3,8 +3,6 @@ import img1 from '../../assets/bannerImg1.png'
 
 
 const Banner = () => {
- 
-
     return (
         <div>
            <div className="hero min-h-screen">

@@ -10,7 +10,10 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const [ordersLoading, setOrdersLoading] = useState(true)
     useEffect(() => {
-        axios.get(` https://rocky-anchorage-786356.herokuapp.com/orders/${user.email}`)
+      const headers = { 
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+        };
+        axios.get(` https://rocky-anchorage-786356.herokuapp.com/orders/${user.email}`,{headers})
         .then(data => setOrders(data.data))
         setOrdersLoading(false)
     },[])

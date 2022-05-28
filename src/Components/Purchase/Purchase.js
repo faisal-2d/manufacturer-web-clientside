@@ -17,7 +17,10 @@ const Purchase = () => {
     const navigate = useNavigate(); 
     
     useEffect(() => {
-      axios.get(`https://rocky-anchorage-786356.herokuapp.com/product/${id}`)
+      const headers = { 
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+        };
+      axios.get(`https://rocky-anchorage-786356.herokuapp.com/product/${id}`,{headers})
     .then(data => setProduct(data.data))
     }, [id])
   

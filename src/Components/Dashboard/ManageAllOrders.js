@@ -5,8 +5,11 @@ import ManageAllOrdersRow from './ManageAllOrdersRow';
 const ManageAllOrders = () => {
     const [orders, setOrders] = useState([]);
 
-    useEffect(() => {        
-        axios.get(`https://rocky-anchorage-786356.herokuapp.com/orders`)
+    useEffect(() => {  
+      const headers = { 
+        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+        };      
+        axios.get(`https://rocky-anchorage-786356.herokuapp.com/orders`,{headers})
         .then(data => setOrders(data.data))
     }, [orders])
     return (

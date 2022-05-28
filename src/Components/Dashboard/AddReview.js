@@ -10,7 +10,10 @@ const AddReview = () => {
     const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm();
 
     
-    const handleFormSubmit = data =>{      
+    const handleFormSubmit = data =>{  
+        const headers = { 
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+            };    
       
        const review = {
                 name:user.displayName,
@@ -18,7 +21,7 @@ const AddReview = () => {
                 rating: data.rating,
                 comment: data.comment                 
             }
-        axios.post('https://rocky-anchorage-786356.herokuapp.com/review', review)
+        axios.post('https://rocky-anchorage-786356.herokuapp.com/review', review, {headers})
         .then(data => console.log("Review added: ", data))    
     };      
 

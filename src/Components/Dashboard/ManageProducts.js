@@ -5,8 +5,11 @@ import ManageProductsCard from './ManageProductsCard';
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {        
-        axios.get(`https://rocky-anchorage-786356.herokuapp.com/products`)
+    useEffect(() => {   
+        const headers = { 
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,                
+            };     
+        axios.get(`https://rocky-anchorage-786356.herokuapp.com/products`,{headers})
         .then(data => setProducts(data.data))
     }, [products])
     return (

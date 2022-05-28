@@ -41,14 +41,27 @@ const Blog = () => {
             </article>
             <article className="mb-10">
                 <h3 className="text-primary text-2xl">Why you do not set the state directly in React. For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts</h3>
-                <div>
+                <div className='my-10'>
+                    <p>There are some possible causes:</p>
 
+                    <div className='pl-12'>
+                    <li>We will lose control of the state across all components</li>
+                    <li>If we update it directly, calling the setState() afterward may just replace the update we made.</li>
+                    <li>When we directly update the state, it does not change this.state immediately. Instead, it creates a pending state transition, and accessing it after calling this method will only return the present value.</li>
+                    </div>
+                    
                 </div>
             </article>
             <article className="mb-10">
                 <h3 className="text-primary text-2xl">You have an array of products. Each product has a name, price, description, etc. How will you implement a search to find products by name?</h3>
-                <div>
-
+                <div className='my-10'>                   
+                        <code>                           
+                        <p>
+                            const myArray = []; <br />
+                            const searchName = "Jhanker"; <br />
+                            const result = myArray.filter(item =&gt;  item.name === searchName)                            
+                        </p>                    
+                        </code>
                 </div>
             </article>
             <article className="mb-10">

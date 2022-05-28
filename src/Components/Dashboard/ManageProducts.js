@@ -6,7 +6,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {        
-        axios.get(`https://gentle-journey-61148.herokuapp.com/products`)
+        axios.get(`https://rocky-anchorage-786356.herokuapp.com/products`)
         .then(data => setProducts(data.data))
     }, [products])
     return (

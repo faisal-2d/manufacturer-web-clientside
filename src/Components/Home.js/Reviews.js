@@ -8,7 +8,7 @@ const Reviews = () => {
     
     useEffect(() => {
        
-        axios.get('https://gentle-journey-61148.herokuapp.com/reviews')
+        axios.get('https://rocky-anchorage-786356.herokuapp.com/reviews')
     .then(data => reversedReviews(data.data));
     } ,[]);
 

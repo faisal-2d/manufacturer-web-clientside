@@ -11,7 +11,7 @@ const CheckoutForm = ({order}) => {
     const [clientSecrete, setClientSecrete] = useState();
 
     useEffect(() => {
-        axios.post(`https://gentle-journey-61148.herokuapp.com/create-payment-intent`, price)
+        axios.post(`https://rocky-anchorage-786356.herokuapp.com/create-payment-intent`, price)
         .then(data => {
             if(data?.clientSecrete){
                 setClientSecrete(data.clientSecrete);

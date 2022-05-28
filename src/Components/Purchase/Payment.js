@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L2IafEwxTNKPPwRKHu6suUkA2Jap7OAZe2u0
 
 const Payment = () => {
     const {orderId} = useParams();
-    const {data : order, isLoading, refetch} = useQuery(['payment', orderId], () => axios.get(`https://gentle-journey-61148.herokuapp.com/order/${orderId}`)
+    const {data : order, isLoading, refetch} = useQuery(['payment', orderId], () => axios.get(`https://rocky-anchorage-786356.herokuapp.com/order/${orderId}`)
     .then()
     )
 

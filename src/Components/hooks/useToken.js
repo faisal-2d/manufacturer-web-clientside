@@ -7,7 +7,7 @@ const useToken = (user) => {
         const userEmail = user?.user?.email;
         const currentUser = {email : userEmail};
         if(userEmail){            
-            axios.put(`https://gentle-journey-61148.herokuapp.com/user/${userEmail}`, currentUser)
+            axios.put(`https://rocky-anchorage-786356.herokuapp.com/user/${userEmail}`, currentUser)
             .then(data => {
                 const accessToken = data.data.token;
                 localStorage.setItem("accessToken",accessToken)

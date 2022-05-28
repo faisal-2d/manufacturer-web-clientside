@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const [ordersLoading, setOrdersLoading] = useState(true)
     useEffect(() => {
-        axios.get(` https://gentle-journey-61148.herokuapp.com/orders/${user.email}`)
+        axios.get(` https://rocky-anchorage-786356.herokuapp.com/orders/${user.email}`)
         .then(data => setOrders(data.data))
         setOrdersLoading(false)
     },[])

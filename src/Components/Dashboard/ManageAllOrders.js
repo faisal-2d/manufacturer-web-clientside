@@ -11,8 +11,6 @@ const ManageAllOrders = () => {
     }, [orders])
     return (
         <div>
-            <p className='my-44'>All Orders are here!</p>
-
 <div className="overflow-x-auto p-3">
   <table className="table w-80 h-full">
    

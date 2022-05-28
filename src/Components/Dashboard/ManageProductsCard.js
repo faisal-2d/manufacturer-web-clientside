@@ -8,7 +8,7 @@ const ManageProductsCard = ({product}) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-  <figure><img className='m-5' src={product.img} alt="Shoes" /></figure>
+  <figure><img className='m-5 w-44' src={product.img} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">{product.productName}</h2>
     <p>{product.description}</p>

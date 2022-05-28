@@ -13,7 +13,7 @@ const Reviews = () => {
     } ,[]);
 
     const reversedReviews = arr =>{
-        setReviews(arr.reverse());        
+        setReviews(arr.reverse().slice(0,6));        
     } 
 
     if(!reviews){

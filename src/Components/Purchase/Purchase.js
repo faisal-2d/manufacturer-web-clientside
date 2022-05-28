@@ -68,7 +68,7 @@ const Purchase = () => {
 
     <div className="mb-3">
     <label className="label">Product Name</label>
-      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={product.productName}  {...register("productName")} />
+      <input type="text" disabled className="input input-bordered w-full max-w-xs" defaultValue={product.productName}  {...register("productName")} />
       {setValue("productName", product.productName)}      
       </div>
 
@@ -78,7 +78,7 @@ const Purchase = () => {
 
     </div>    
     <div>
-    <p>Per Piece Price: {product.perUnitPrice} Tk</p> 
+    <p>Per Piece Price: $ {product.perUnitPrice}</p> 
      
   </div>    
     
@@ -98,11 +98,11 @@ const Purchase = () => {
 
     
     <div className="mb-3">
-      <input type="text" disabled className="input input-bordered w-full max-w-xs" value={user.displayName}  {...register("displayName")} />
+      <input type="text" disabled className="input input-bordered w-full max-w-xs" defaultValue={user.displayName}  {...register("displayName")} />
       {setValue("displayName", user.displayName)}      
       </div>
     <div className="mb-3">
-      <input type="email" disabled className="input input-bordered w-full max-w-xs" value={user.email}  {...register("email")} />
+      <input type="email" disabled className="input input-bordered w-full max-w-xs" defaultValue={user.email}  {...register("email")} />
       {setValue("email", user.email)}      
       </div>
       
